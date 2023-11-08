@@ -6,7 +6,6 @@ import 'package:freezednetworkboiler/blocs/theme/theme_bloc.dart';
 import 'package:freezednetworkboiler/constants/navConstants.dart';
 import 'package:freezednetworkboiler/services/blocObserver.dart';
 import 'package:freezednetworkboiler/services/utils/routes.dart';
-import 'package:freezednetworkboiler/ui/screens/home.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 void main() async {
