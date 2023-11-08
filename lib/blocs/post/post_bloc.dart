@@ -1,18 +1,15 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:freezednetworkboiler/model/comment/comment_model.dart';
 import 'package:freezednetworkboiler/model/network/apiCalls/postapi.dart';
 import 'package:freezednetworkboiler/model/network/networkResponse.dart';
 import 'package:freezednetworkboiler/model/post/post_model.dart';
-import 'package:freezednetworkboiler/services/network_service.dart';
 part 'post_bloc.freezed.dart';
 
 part 'post_state.dart';
 part 'post_event.dart';
 
 class PostBloc extends Bloc<PostEvent, PostState> {
-  NetworkService networkService = NetworkService();
   PostApi postApi = PostApi();
   PostBloc() : super(const PostState.initial()) {
     on<PostEvent>((event, emit) => event.when(
