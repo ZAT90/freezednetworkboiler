@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:freezednetworkboiler/constants/uiConstants.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -16,14 +15,12 @@ class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeData> {
 
   @override
   ThemeData? fromJson(Map<String, dynamic> json) {
-    // TODO: implement fromJson
     try {
       if (json['light'] as bool) return UiConstants.lightTheme;
       return UiConstants.darkTheme;
     } catch (_) {
       return null;
     }
-    // throw UnimplementedError();
   }
 
   @override
@@ -33,7 +30,5 @@ class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeData> {
     } catch (_) {
       return null;
     }
-    // TODO: implement toJson
-    // throw UnimplementedError();
   }
 }
