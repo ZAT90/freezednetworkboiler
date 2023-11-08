@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:freezednetworkboiler/model/comment/comment_model.dart';
-import 'package:freezednetworkboiler/model/network/apiCalls/postApi.dart';
+import 'package:freezednetworkboiler/model/network/apiCalls/postapi.dart';
 import 'package:freezednetworkboiler/model/network/networkResponse.dart';
 import 'package:freezednetworkboiler/model/post/post_model.dart';
 import 'package:freezednetworkboiler/services/network_service.dart';
