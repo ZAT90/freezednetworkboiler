@@ -1,17 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:freezednetworkboiler/constants/apiConstants.dart';
-import 'dart:io';
-
 import 'package:freezednetworkboiler/model/network/networkRequestBody.dart';
 import 'package:freezednetworkboiler/model/network/networkResponse.dart';
 
-// part 'network_service.freezed.dart';
-
-// part 'NetworkRequestBody.freezed.dart';
-// //part 'NetworkRequestBody.g.dart';
-// part 'NetworkResponse.freezed.dart';
 
 class AccessTokenResponse {
   String? accessToken;
@@ -139,9 +131,9 @@ class NetworkService {
     ProgressCallback? onReceiveProgress,
   }) async {
     _dio = await _getDefaultDioClient();
-    print('_dio: ${_dio!.options.baseUrl}');
-    print('_headers: $_headers');
-    print('request: ${request.path}');
+    // print('_dio: ${_dio!.options.baseUrl}');
+    // print('_headers: $_headers');
+    // print('request: ${request.path}');
 
     final req = _PreparedNetworkRequest<Model>(
       request,
