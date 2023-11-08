@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:freezednetworkboiler/constants/apiConstants.dart';
 import 'dart:io';
 
 import 'package:freezednetworkboiler/model/network/networkRequestBody.dart';
@@ -40,14 +41,14 @@ class NetworkRequest {
 class _PreparedNetworkRequest<Model> {
   const _PreparedNetworkRequest(
     this.request,
-   // this.parser,
+    // this.parser,
     this.dio,
     this.headers,
     this.onSendProgress,
     this.onReceiveProgress,
   );
   final NetworkRequest request;
- // final Model Function(dynamic) parser;
+  // final Model Function(dynamic) parser;
   final Dio dio;
   final Map<String, dynamic> headers;
   final ProgressCallback? onSendProgress;
@@ -55,30 +56,32 @@ class _PreparedNetworkRequest<Model> {
 }
 
 Future<NetworkResponse<Model>> executeRequest<Model>(
-  _PreparedNetworkRequest _preparedNetworkRequest,
+  _PreparedNetworkRequest preparedNetworkRequest,
 ) async {
   try {
-    print(
-        '_PreparedNetworkRequest request data: ${_preparedNetworkRequest.request.data}');
-    print(
-        '_PreparedNetworkRequest request headers: ${_preparedNetworkRequest.dio.options.baseUrl}');
+    // print(
+    //     '_PreparedNetworkRequest request data: ${preparedNetworkRequest.request.data}');
+    // print(
+    //     '_PreparedNetworkRequest request headers: ${preparedNetworkRequest.dio.options.baseUrl}');
+    //     print(
+    //     '_PreparedNetworkRequest request path: ${preparedNetworkRequest.request.path}');
 
-    dynamic body = _preparedNetworkRequest.request.data?.whenOrNull(
+    dynamic body = preparedNetworkRequest.request.data?.whenOrNull(
       json: (data) => data,
       text: (data) => data,
     );
-    final response = await _preparedNetworkRequest.dio.request(
-      _preparedNetworkRequest.request.path,
+    final response = await preparedNetworkRequest.dio.request(
+      preparedNetworkRequest.request.path,
       data: body,
-      queryParameters: _preparedNetworkRequest.request.queryParams,
+      queryParameters: preparedNetworkRequest.request.queryParams,
       options: Options(
-        method: _preparedNetworkRequest.request.type.name,
-        headers: _preparedNetworkRequest.headers,
+        method: preparedNetworkRequest.request.type.name,
+        headers: preparedNetworkRequest.headers,
       ),
-      onSendProgress: _preparedNetworkRequest.onSendProgress,
-      onReceiveProgress: _preparedNetworkRequest.onReceiveProgress,
+      onSendProgress: preparedNetworkRequest.onSendProgress,
+      onReceiveProgress: preparedNetworkRequest.onReceiveProgress,
     );
-   // print('response _preparedNetworkRequest: ${response.data}');
+    // print('response _preparedNetworkRequest: ${response.data}');
     return NetworkResponse.ok(response.data);
   } on DioException catch (error) {
     print('error: $error');
@@ -112,8 +115,8 @@ class NetworkService {
   // })  : _dio = dioClient,
   //       _headers = httpHeaders ?? {};
   Dio? _dio;
-  String baseUrl = 'https://jsonplaceholder.typicode.com';
-   Map<String, String> _headers = Map<String, String>();
+  String baseUrl = ApiConstants.baseUrl;
+  final Map<String, String> _headers = <String, String>{};
   Future<Dio> _getDefaultDioClient() async {
     _headers['content-type'] = 'application/json; charset=utf-8';
     Dio dio = Dio()
@@ -130,7 +133,7 @@ class NetworkService {
 
   Future<NetworkResponse<Model>> execute<Model>(
     NetworkRequest request,
-    //Model Function(dynamic) parser, 
+    //Model Function(dynamic) parser,
     {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
@@ -142,7 +145,7 @@ class NetworkService {
 
     final req = _PreparedNetworkRequest<Model>(
       request,
-    //  parser,
+      //  parser,
       _dio!,
       {..._headers, ...(request.headers ?? {})},
       onSendProgress,
@@ -155,27 +158,27 @@ class NetworkService {
     return result;
   }
 }
-  
-  // Future<NetworkResponse<Model>> execute<Model>(
-  //   NetworkRequest request,
-  //   Model Function(Map<String, dynamic>) parser, {
-  //   ProgressCallback? onSendProgress = null,
-  //   ProgressCallback? onReceiveProgress = null,
-  // }) async {
-  //   if (_dio == null) {
-  //     _dio = await _getDefaultDioClient();
-  //   }
-  //   final req = _PreparedNetworkRequest<Model>(
-  //     request,
-  //     parser,
-  //     _dio!,
-  //     {..._headers, ...(request.headers ?? {})},
-  //     onSendProgress,
-  //     onReceiveProgress,
-  //   );
-  //   final result = await compute(
-  //     executeRequest<Model>,
-  //     req,
-  //   );
-  //   return result;
-  // }
+
+// Future<NetworkResponse<Model>> execute<Model>(
+//   NetworkRequest request,
+//   Model Function(Map<String, dynamic>) parser, {
+//   ProgressCallback? onSendProgress = null,
+//   ProgressCallback? onReceiveProgress = null,
+// }) async {
+//   if (_dio == null) {
+//     _dio = await _getDefaultDioClient();
+//   }
+//   final req = _PreparedNetworkRequest<Model>(
+//     request,
+//     parser,
+//     _dio!,
+//     {..._headers, ...(request.headers ?? {})},
+//     onSendProgress,
+//     onReceiveProgress,
+//   );
+//   final result = await compute(
+//     executeRequest<Model>,
+//     req,
+//   );
+//   return result;
+// }

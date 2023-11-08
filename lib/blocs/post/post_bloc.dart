@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:freezednetworkboiler/model/comment/comment_model.dart';
+import 'package:freezednetworkboiler/model/network/apiCalls/postApi.dart';
 import 'package:freezednetworkboiler/model/network/networkResponse.dart';
 import 'package:freezednetworkboiler/model/post/post_model.dart';
 import 'package:freezednetworkboiler/services/network_service.dart';
@@ -11,43 +13,51 @@ part 'post_event.dart';
 
 class PostBloc extends Bloc<PostEvent, PostState> {
   NetworkService networkService = NetworkService();
+  PostApi postApi = PostApi();
   PostBloc() : super(const PostState.initial()) {
-    on<LoadPost>((event, emit) async => await loadAllPosts(event, emit));
-    on<LoadComments>((event, emit) async => await loadComments(event, emit));
-    on<LoadPostDetail>(
-        (event, emit) async => await loadPostDetail(event, emit));
+    on<PostEvent>((event, emit) => event.when(
+        loadPosts: () async => await loadAllPosts(emit),
+        loadComments: (postId) async => await loadComments(postId, emit),
+        loadPostDetail: (postId) async => await loadPostDetail(postId, emit)));
   }
 
-  Future<void> loadAllPosts(LoadPost event, Emitter<PostState> emit) async {
-    debugPrint('load my posts');
-    NetworkResponse response = await networkService.execute(
-        const NetworkRequest(type: NetworkRequestType.GET, path: '/posts'));
-    response.maybeWhen(ok: (apiResponse) {
-      List<PostModel> posts = (apiResponse as List)
-          .map((item) => PostModel.fromJson(item))
-          .toList();
-      emit(PostState.postLoaded(posts));
-    }, badRequest: (info) {
-      print('badRequest: $info');
-      // Handle specific error
-    }, orElse: () {
-      print('generic error');
-      // Handle generic error
-    });
+  Future<void> loadAllPosts(Emitter<PostState> emit) async {
+    // debugPrint('load my posts');
+    NetworkResponse postResponse = await postApi.loadPostsApi();
+    postResponse.maybeWhen(
+        ok: (apiResponse) {
+          List<PostModel> posts = (apiResponse as List)
+              .map((item) => PostModel.fromJson(item))
+              .toList();
+          emit(PostState.postLoaded(posts));
+        },
+        badRequest: (message) => emit(PostState.loadError(message)),
+        noData: (message) => emit(PostState.loadError(message)),
+        orElse: () {});
   }
 
-  Future<void> loadComments(
-      LoadComments event, Emitter<PostState> emit) async {}
+  Future<void> loadComments(int? postId, Emitter<PostState> emit) async {
+    NetworkResponse commentResponse = await postApi.loadCommentApi(postId);
+    commentResponse.maybeWhen(
+        ok: (apiResponse) {
+          List apiList = apiResponse as List;
+          emit(PostState.commentsLoaded(
+              apiList.map((cmnt) => CommentModel.fromJson(cmnt)).toList()));
+        },
+        badRequest: (message) => emit(PostState.loadError(message)),
+        noData: (message) => emit(PostState.loadError(message)),
+        orElse: () {});
+  }
 
-  Future<void> loadPostDetail(
-      LoadPostDetail event, Emitter<PostState> emit) async {
-    NetworkResponse response = await networkService.execute(NetworkRequest(
-        type: NetworkRequestType.GET, path: '/posts/${event.postId}'));
-    response.maybeWhen(
+  Future<void> loadPostDetail(int? postId, Emitter<PostState> emit) async {
+    NetworkResponse postDetailResponse =
+        await postApi.loadPostDetailApi(postId);
+    postDetailResponse.maybeWhen(
         ok: (apiResponse) {
           emit(PostState.loadPostDetail(PostModel.fromJson(apiResponse)));
         },
-        badRequest: (message) {},
+        badRequest: (message) => emit(PostState.loadError(message)),
+        noData: (message) => emit(PostState.loadError(message)),
         orElse: () {});
   }
 }

@@ -22,6 +22,8 @@ mixin _$PostState {
     required TResult Function() loadInProgress,
     required TResult Function(List<PostModel> posts) postLoaded,
     required TResult Function(PostModel post) loadPostDetail,
+    required TResult Function(List<CommentModel> comments) commentsLoaded,
+    required TResult Function(String? error) loadError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +32,8 @@ mixin _$PostState {
     TResult? Function()? loadInProgress,
     TResult? Function(List<PostModel> posts)? postLoaded,
     TResult? Function(PostModel post)? loadPostDetail,
+    TResult? Function(List<CommentModel> comments)? commentsLoaded,
+    TResult? Function(String? error)? loadError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +42,8 @@ mixin _$PostState {
     TResult Function()? loadInProgress,
     TResult Function(List<PostModel> posts)? postLoaded,
     TResult Function(PostModel post)? loadPostDetail,
+    TResult Function(List<CommentModel> comments)? commentsLoaded,
+    TResult Function(String? error)? loadError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +53,8 @@ mixin _$PostState {
     required TResult Function(LoadInProgress value) loadInProgress,
     required TResult Function(PostLoaded value) postLoaded,
     required TResult Function(PostDetailLoaded value) loadPostDetail,
+    required TResult Function(PostCommentLoaded value) commentsLoaded,
+    required TResult Function(PostLoadError value) loadError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +63,8 @@ mixin _$PostState {
     TResult? Function(LoadInProgress value)? loadInProgress,
     TResult? Function(PostLoaded value)? postLoaded,
     TResult? Function(PostDetailLoaded value)? loadPostDetail,
+    TResult? Function(PostCommentLoaded value)? commentsLoaded,
+    TResult? Function(PostLoadError value)? loadError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +73,8 @@ mixin _$PostState {
     TResult Function(LoadInProgress value)? loadInProgress,
     TResult Function(PostLoaded value)? postLoaded,
     TResult Function(PostDetailLoaded value)? loadPostDetail,
+    TResult Function(PostCommentLoaded value)? commentsLoaded,
+    TResult Function(PostLoadError value)? loadError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -125,6 +137,8 @@ class _$Initial implements Initial {
     required TResult Function() loadInProgress,
     required TResult Function(List<PostModel> posts) postLoaded,
     required TResult Function(PostModel post) loadPostDetail,
+    required TResult Function(List<CommentModel> comments) commentsLoaded,
+    required TResult Function(String? error) loadError,
   }) {
     return initial();
   }
@@ -136,6 +150,8 @@ class _$Initial implements Initial {
     TResult? Function()? loadInProgress,
     TResult? Function(List<PostModel> posts)? postLoaded,
     TResult? Function(PostModel post)? loadPostDetail,
+    TResult? Function(List<CommentModel> comments)? commentsLoaded,
+    TResult? Function(String? error)? loadError,
   }) {
     return initial?.call();
   }
@@ -147,6 +163,8 @@ class _$Initial implements Initial {
     TResult Function()? loadInProgress,
     TResult Function(List<PostModel> posts)? postLoaded,
     TResult Function(PostModel post)? loadPostDetail,
+    TResult Function(List<CommentModel> comments)? commentsLoaded,
+    TResult Function(String? error)? loadError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -162,6 +180,8 @@ class _$Initial implements Initial {
     required TResult Function(LoadInProgress value) loadInProgress,
     required TResult Function(PostLoaded value) postLoaded,
     required TResult Function(PostDetailLoaded value) loadPostDetail,
+    required TResult Function(PostCommentLoaded value) commentsLoaded,
+    required TResult Function(PostLoadError value) loadError,
   }) {
     return initial(this);
   }
@@ -173,6 +193,8 @@ class _$Initial implements Initial {
     TResult? Function(LoadInProgress value)? loadInProgress,
     TResult? Function(PostLoaded value)? postLoaded,
     TResult? Function(PostDetailLoaded value)? loadPostDetail,
+    TResult? Function(PostCommentLoaded value)? commentsLoaded,
+    TResult? Function(PostLoadError value)? loadError,
   }) {
     return initial?.call(this);
   }
@@ -184,6 +206,8 @@ class _$Initial implements Initial {
     TResult Function(LoadInProgress value)? loadInProgress,
     TResult Function(PostLoaded value)? postLoaded,
     TResult Function(PostDetailLoaded value)? loadPostDetail,
+    TResult Function(PostCommentLoaded value)? commentsLoaded,
+    TResult Function(PostLoadError value)? loadError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -239,6 +263,8 @@ class _$LoadInProgress implements LoadInProgress {
     required TResult Function() loadInProgress,
     required TResult Function(List<PostModel> posts) postLoaded,
     required TResult Function(PostModel post) loadPostDetail,
+    required TResult Function(List<CommentModel> comments) commentsLoaded,
+    required TResult Function(String? error) loadError,
   }) {
     return loadInProgress();
   }
@@ -250,6 +276,8 @@ class _$LoadInProgress implements LoadInProgress {
     TResult? Function()? loadInProgress,
     TResult? Function(List<PostModel> posts)? postLoaded,
     TResult? Function(PostModel post)? loadPostDetail,
+    TResult? Function(List<CommentModel> comments)? commentsLoaded,
+    TResult? Function(String? error)? loadError,
   }) {
     return loadInProgress?.call();
   }
@@ -261,6 +289,8 @@ class _$LoadInProgress implements LoadInProgress {
     TResult Function()? loadInProgress,
     TResult Function(List<PostModel> posts)? postLoaded,
     TResult Function(PostModel post)? loadPostDetail,
+    TResult Function(List<CommentModel> comments)? commentsLoaded,
+    TResult Function(String? error)? loadError,
     required TResult orElse(),
   }) {
     if (loadInProgress != null) {
@@ -276,6 +306,8 @@ class _$LoadInProgress implements LoadInProgress {
     required TResult Function(LoadInProgress value) loadInProgress,
     required TResult Function(PostLoaded value) postLoaded,
     required TResult Function(PostDetailLoaded value) loadPostDetail,
+    required TResult Function(PostCommentLoaded value) commentsLoaded,
+    required TResult Function(PostLoadError value) loadError,
   }) {
     return loadInProgress(this);
   }
@@ -287,6 +319,8 @@ class _$LoadInProgress implements LoadInProgress {
     TResult? Function(LoadInProgress value)? loadInProgress,
     TResult? Function(PostLoaded value)? postLoaded,
     TResult? Function(PostDetailLoaded value)? loadPostDetail,
+    TResult? Function(PostCommentLoaded value)? commentsLoaded,
+    TResult? Function(PostLoadError value)? loadError,
   }) {
     return loadInProgress?.call(this);
   }
@@ -298,6 +332,8 @@ class _$LoadInProgress implements LoadInProgress {
     TResult Function(LoadInProgress value)? loadInProgress,
     TResult Function(PostLoaded value)? postLoaded,
     TResult Function(PostDetailLoaded value)? loadPostDetail,
+    TResult Function(PostCommentLoaded value)? commentsLoaded,
+    TResult Function(PostLoadError value)? loadError,
     required TResult orElse(),
   }) {
     if (loadInProgress != null) {
@@ -385,6 +421,8 @@ class _$PostLoaded implements PostLoaded {
     required TResult Function() loadInProgress,
     required TResult Function(List<PostModel> posts) postLoaded,
     required TResult Function(PostModel post) loadPostDetail,
+    required TResult Function(List<CommentModel> comments) commentsLoaded,
+    required TResult Function(String? error) loadError,
   }) {
     return postLoaded(posts);
   }
@@ -396,6 +434,8 @@ class _$PostLoaded implements PostLoaded {
     TResult? Function()? loadInProgress,
     TResult? Function(List<PostModel> posts)? postLoaded,
     TResult? Function(PostModel post)? loadPostDetail,
+    TResult? Function(List<CommentModel> comments)? commentsLoaded,
+    TResult? Function(String? error)? loadError,
   }) {
     return postLoaded?.call(posts);
   }
@@ -407,6 +447,8 @@ class _$PostLoaded implements PostLoaded {
     TResult Function()? loadInProgress,
     TResult Function(List<PostModel> posts)? postLoaded,
     TResult Function(PostModel post)? loadPostDetail,
+    TResult Function(List<CommentModel> comments)? commentsLoaded,
+    TResult Function(String? error)? loadError,
     required TResult orElse(),
   }) {
     if (postLoaded != null) {
@@ -422,6 +464,8 @@ class _$PostLoaded implements PostLoaded {
     required TResult Function(LoadInProgress value) loadInProgress,
     required TResult Function(PostLoaded value) postLoaded,
     required TResult Function(PostDetailLoaded value) loadPostDetail,
+    required TResult Function(PostCommentLoaded value) commentsLoaded,
+    required TResult Function(PostLoadError value) loadError,
   }) {
     return postLoaded(this);
   }
@@ -433,6 +477,8 @@ class _$PostLoaded implements PostLoaded {
     TResult? Function(LoadInProgress value)? loadInProgress,
     TResult? Function(PostLoaded value)? postLoaded,
     TResult? Function(PostDetailLoaded value)? loadPostDetail,
+    TResult? Function(PostCommentLoaded value)? commentsLoaded,
+    TResult? Function(PostLoadError value)? loadError,
   }) {
     return postLoaded?.call(this);
   }
@@ -444,6 +490,8 @@ class _$PostLoaded implements PostLoaded {
     TResult Function(LoadInProgress value)? loadInProgress,
     TResult Function(PostLoaded value)? postLoaded,
     TResult Function(PostDetailLoaded value)? loadPostDetail,
+    TResult Function(PostCommentLoaded value)? commentsLoaded,
+    TResult Function(PostLoadError value)? loadError,
     required TResult orElse(),
   }) {
     if (postLoaded != null) {
@@ -540,6 +588,8 @@ class _$PostDetailLoaded implements PostDetailLoaded {
     required TResult Function() loadInProgress,
     required TResult Function(List<PostModel> posts) postLoaded,
     required TResult Function(PostModel post) loadPostDetail,
+    required TResult Function(List<CommentModel> comments) commentsLoaded,
+    required TResult Function(String? error) loadError,
   }) {
     return loadPostDetail(post);
   }
@@ -551,6 +601,8 @@ class _$PostDetailLoaded implements PostDetailLoaded {
     TResult? Function()? loadInProgress,
     TResult? Function(List<PostModel> posts)? postLoaded,
     TResult? Function(PostModel post)? loadPostDetail,
+    TResult? Function(List<CommentModel> comments)? commentsLoaded,
+    TResult? Function(String? error)? loadError,
   }) {
     return loadPostDetail?.call(post);
   }
@@ -562,6 +614,8 @@ class _$PostDetailLoaded implements PostDetailLoaded {
     TResult Function()? loadInProgress,
     TResult Function(List<PostModel> posts)? postLoaded,
     TResult Function(PostModel post)? loadPostDetail,
+    TResult Function(List<CommentModel> comments)? commentsLoaded,
+    TResult Function(String? error)? loadError,
     required TResult orElse(),
   }) {
     if (loadPostDetail != null) {
@@ -577,6 +631,8 @@ class _$PostDetailLoaded implements PostDetailLoaded {
     required TResult Function(LoadInProgress value) loadInProgress,
     required TResult Function(PostLoaded value) postLoaded,
     required TResult Function(PostDetailLoaded value) loadPostDetail,
+    required TResult Function(PostCommentLoaded value) commentsLoaded,
+    required TResult Function(PostLoadError value) loadError,
   }) {
     return loadPostDetail(this);
   }
@@ -588,6 +644,8 @@ class _$PostDetailLoaded implements PostDetailLoaded {
     TResult? Function(LoadInProgress value)? loadInProgress,
     TResult? Function(PostLoaded value)? postLoaded,
     TResult? Function(PostDetailLoaded value)? loadPostDetail,
+    TResult? Function(PostCommentLoaded value)? commentsLoaded,
+    TResult? Function(PostLoadError value)? loadError,
   }) {
     return loadPostDetail?.call(this);
   }
@@ -599,6 +657,8 @@ class _$PostDetailLoaded implements PostDetailLoaded {
     TResult Function(LoadInProgress value)? loadInProgress,
     TResult Function(PostLoaded value)? postLoaded,
     TResult Function(PostDetailLoaded value)? loadPostDetail,
+    TResult Function(PostCommentLoaded value)? commentsLoaded,
+    TResult Function(PostLoadError value)? loadError,
     required TResult orElse(),
   }) {
     if (loadPostDetail != null) {
@@ -614,6 +674,328 @@ abstract class PostDetailLoaded implements PostState {
   PostModel get post;
   @JsonKey(ignore: true)
   _$$PostDetailLoadedCopyWith<_$PostDetailLoaded> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PostCommentLoadedCopyWith<$Res> {
+  factory _$$PostCommentLoadedCopyWith(
+          _$PostCommentLoaded value, $Res Function(_$PostCommentLoaded) then) =
+      __$$PostCommentLoadedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<CommentModel> comments});
+}
+
+/// @nodoc
+class __$$PostCommentLoadedCopyWithImpl<$Res>
+    extends _$PostStateCopyWithImpl<$Res, _$PostCommentLoaded>
+    implements _$$PostCommentLoadedCopyWith<$Res> {
+  __$$PostCommentLoadedCopyWithImpl(
+      _$PostCommentLoaded _value, $Res Function(_$PostCommentLoaded) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? comments = null,
+  }) {
+    return _then(_$PostCommentLoaded(
+      null == comments
+          ? _value._comments
+          : comments // ignore: cast_nullable_to_non_nullable
+              as List<CommentModel>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PostCommentLoaded implements PostCommentLoaded {
+  const _$PostCommentLoaded(final List<CommentModel> comments)
+      : _comments = comments;
+
+  final List<CommentModel> _comments;
+  @override
+  List<CommentModel> get comments {
+    if (_comments is EqualUnmodifiableListView) return _comments;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_comments);
+  }
+
+  @override
+  String toString() {
+    return 'PostState.commentsLoaded(comments: $comments)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PostCommentLoaded &&
+            const DeepCollectionEquality().equals(other._comments, _comments));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_comments));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PostCommentLoadedCopyWith<_$PostCommentLoaded> get copyWith =>
+      __$$PostCommentLoadedCopyWithImpl<_$PostCommentLoaded>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadInProgress,
+    required TResult Function(List<PostModel> posts) postLoaded,
+    required TResult Function(PostModel post) loadPostDetail,
+    required TResult Function(List<CommentModel> comments) commentsLoaded,
+    required TResult Function(String? error) loadError,
+  }) {
+    return commentsLoaded(comments);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
+    TResult? Function(List<PostModel> posts)? postLoaded,
+    TResult? Function(PostModel post)? loadPostDetail,
+    TResult? Function(List<CommentModel> comments)? commentsLoaded,
+    TResult? Function(String? error)? loadError,
+  }) {
+    return commentsLoaded?.call(comments);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadInProgress,
+    TResult Function(List<PostModel> posts)? postLoaded,
+    TResult Function(PostModel post)? loadPostDetail,
+    TResult Function(List<CommentModel> comments)? commentsLoaded,
+    TResult Function(String? error)? loadError,
+    required TResult orElse(),
+  }) {
+    if (commentsLoaded != null) {
+      return commentsLoaded(comments);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(LoadInProgress value) loadInProgress,
+    required TResult Function(PostLoaded value) postLoaded,
+    required TResult Function(PostDetailLoaded value) loadPostDetail,
+    required TResult Function(PostCommentLoaded value) commentsLoaded,
+    required TResult Function(PostLoadError value) loadError,
+  }) {
+    return commentsLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(LoadInProgress value)? loadInProgress,
+    TResult? Function(PostLoaded value)? postLoaded,
+    TResult? Function(PostDetailLoaded value)? loadPostDetail,
+    TResult? Function(PostCommentLoaded value)? commentsLoaded,
+    TResult? Function(PostLoadError value)? loadError,
+  }) {
+    return commentsLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(LoadInProgress value)? loadInProgress,
+    TResult Function(PostLoaded value)? postLoaded,
+    TResult Function(PostDetailLoaded value)? loadPostDetail,
+    TResult Function(PostCommentLoaded value)? commentsLoaded,
+    TResult Function(PostLoadError value)? loadError,
+    required TResult orElse(),
+  }) {
+    if (commentsLoaded != null) {
+      return commentsLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PostCommentLoaded implements PostState {
+  const factory PostCommentLoaded(final List<CommentModel> comments) =
+      _$PostCommentLoaded;
+
+  List<CommentModel> get comments;
+  @JsonKey(ignore: true)
+  _$$PostCommentLoadedCopyWith<_$PostCommentLoaded> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PostLoadErrorCopyWith<$Res> {
+  factory _$$PostLoadErrorCopyWith(
+          _$PostLoadError value, $Res Function(_$PostLoadError) then) =
+      __$$PostLoadErrorCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? error});
+}
+
+/// @nodoc
+class __$$PostLoadErrorCopyWithImpl<$Res>
+    extends _$PostStateCopyWithImpl<$Res, _$PostLoadError>
+    implements _$$PostLoadErrorCopyWith<$Res> {
+  __$$PostLoadErrorCopyWithImpl(
+      _$PostLoadError _value, $Res Function(_$PostLoadError) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = freezed,
+  }) {
+    return _then(_$PostLoadError(
+      freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PostLoadError implements PostLoadError {
+  const _$PostLoadError(this.error);
+
+  @override
+  final String? error;
+
+  @override
+  String toString() {
+    return 'PostState.loadError(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PostLoadError &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, error);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PostLoadErrorCopyWith<_$PostLoadError> get copyWith =>
+      __$$PostLoadErrorCopyWithImpl<_$PostLoadError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadInProgress,
+    required TResult Function(List<PostModel> posts) postLoaded,
+    required TResult Function(PostModel post) loadPostDetail,
+    required TResult Function(List<CommentModel> comments) commentsLoaded,
+    required TResult Function(String? error) loadError,
+  }) {
+    return loadError(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
+    TResult? Function(List<PostModel> posts)? postLoaded,
+    TResult? Function(PostModel post)? loadPostDetail,
+    TResult? Function(List<CommentModel> comments)? commentsLoaded,
+    TResult? Function(String? error)? loadError,
+  }) {
+    return loadError?.call(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadInProgress,
+    TResult Function(List<PostModel> posts)? postLoaded,
+    TResult Function(PostModel post)? loadPostDetail,
+    TResult Function(List<CommentModel> comments)? commentsLoaded,
+    TResult Function(String? error)? loadError,
+    required TResult orElse(),
+  }) {
+    if (loadError != null) {
+      return loadError(error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(LoadInProgress value) loadInProgress,
+    required TResult Function(PostLoaded value) postLoaded,
+    required TResult Function(PostDetailLoaded value) loadPostDetail,
+    required TResult Function(PostCommentLoaded value) commentsLoaded,
+    required TResult Function(PostLoadError value) loadError,
+  }) {
+    return loadError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(LoadInProgress value)? loadInProgress,
+    TResult? Function(PostLoaded value)? postLoaded,
+    TResult? Function(PostDetailLoaded value)? loadPostDetail,
+    TResult? Function(PostCommentLoaded value)? commentsLoaded,
+    TResult? Function(PostLoadError value)? loadError,
+  }) {
+    return loadError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(LoadInProgress value)? loadInProgress,
+    TResult Function(PostLoaded value)? postLoaded,
+    TResult Function(PostDetailLoaded value)? loadPostDetail,
+    TResult Function(PostCommentLoaded value)? commentsLoaded,
+    TResult Function(PostLoadError value)? loadError,
+    required TResult orElse(),
+  }) {
+    if (loadError != null) {
+      return loadError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PostLoadError implements PostState {
+  const factory PostLoadError(final String? error) = _$PostLoadError;
+
+  String? get error;
+  @JsonKey(ignore: true)
+  _$$PostLoadErrorCopyWith<_$PostLoadError> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
